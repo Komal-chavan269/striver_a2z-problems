@@ -1,0 +1,30 @@
+
+class Solution{
+public:
+
+    vector<int> replaceWithRank(vector<int> &arr, int N){
+       
+                 priority_queue<int,vector<int>, greater<int>>pq;
+      unordered_map<int,int> mp;
+      vector<int>v;
+      int ind=1;
+      for(int i=0;i<N;i++){
+          pq.push(arr[i]);
+      }
+      for(int i=0;i<N;i++){
+         if(mp.find(pq.top())==mp.end()) mp.insert({pq.top(),ind++});
+          pq.pop();
+          
+      }
+      for(int i=0;i<N;i++){
+          
+              v.push_back(mp[arr[i]]);
+          
+      }
+      return v;
+
+
+
+    }
+
+};
